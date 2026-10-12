@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediTrack – Smart Inventory. Safer Homes.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #fff; color: #1a2340; }
+
+/* ── NAVBAR ── */
+.navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 44px; height: 68px;
+  background: rgba(8,14,44,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  position: sticky; top: 0; z-index: 100;
+}
+.navbar-brand { display: flex; align-items: center; gap: 12px; }
+.brand-logo {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: linear-gradient(135deg, #4f6ef7 0%, #818cf8 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; box-shadow: 0 4px 14px rgba(79,110,247,0.45);
+  flex-shrink: 0;
+}
+.brand-text-wrap { display: flex; flex-direction: column; line-height: 1; }
+.brand-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.35rem; font-weight: 900;
+  background: linear-gradient(90deg, #ffffff 0%, #a5b4fc 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; letter-spacing: -0.3px;
+}
+.brand-sub {
+  font-size: 0.68rem; color: #64748b; font-weight: 400;
+  letter-spacing: 0.3px; margin-top: 1px;
+}
+.navbar-links { display: flex; align-items: center; gap: 32px; }
+.nav-a { font-size: 0.88rem; color: #94a3b8; text-decoration: none; font-weight: 500; transition: color .15s; }
+.nav-a:hover { color: #fff; }
+.nav-a.active {
+  color: #ffffff; font-weight: 600;
+  border-bottom: 2px solid #818cf8; padding-bottom: 2px;
+}
+.btn-login {
+  border: 1.5px solid rgba(255,255,255,0.2); border-radius: 8px;
+  padding: 7px 22px; font-size: 0.85rem; font-weight: 600;
+  color: rgba(255,255,255,0.85); background: transparent; cursor: pointer;
+  text-decoration: none; transition: all .15s; letter-spacing: 0.2px;
+}
+.btn-login:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); color: #fff; }
+.btn-signup {
+  background: linear-gradient(135deg, #4f6ef7, #818cf8); color: #fff; border: none;
+  border-radius: 8px; padding: 8px 22px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; transition: opacity .15s;
+  box-shadow: 0 4px 14px rgba(79,110,247,0.4); letter-spacing: 0.2px;
+}
+.btn-signup:hover { opacity: 0.88; }
+
+/* ── HERO ── */
+.hero {
+  position: relative; display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=1800&q=90')
+              center / cover no-repeat;
+  z-index: 0;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(15,23,60,0.92) 0%,
+    rgba(15,23,60,0.80) 38%,
+    rgba(15,23,60,0.45) 62%,
+    rgba(15,23,60,0.15) 100%
+  );
+}
+.hero-left {
+  position: relative; z-index: 1;
+  padding: 60px 52px 52px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 48px 40px 0;
+}
+
+/* badge */
+.hero-badge {
+  display: inline-block;
+  background: rgba(79,110,247,0.25);
+  border: 1px solid rgba(79,110,247,0.5);
+  color: #a5b4fc; font-size: 0.75rem; font-weight: 600;
+  padding: 5px 14px; border-radius: 20px;
+  margin-bottom: 22px; width: fit-content;
+  backdrop-filter: blur(4px);
+}
+.hero-title {
+  font-size: 2.75rem; font-weight: 800;
+  color: #ffffff; line-height: 1.18; margin-bottom: 18px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.hero-title .blue { color: #818cf8; }
+.hero-desc {
+  font-size: 0.93rem; color: rgba(255,255,255,0.75);
+  line-height: 1.75; max-width: 430px; margin-bottom: 38px;
+}
+
+/* feature icons row */
+.feat-row { display: flex; align-items: flex-start; gap: 0; }
+.feat-item { flex: 1; }
+.feat-item:not(:last-child) { padding-right: 20px; }
+.feat-item:not(:first-child) { padding-left: 20px; border-left: 1px solid rgba(255,255,255,0.15); }
+.feat-icon-wrap {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 10px;
+}
+.feat-name { font-size: 0.88rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+.feat-desc { font-size: 0.76rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+/* ── LOGIN CARD ── */
+.login-card {
+  background: #fff; border-radius: 18px;
+  padding: 30px 28px; width: 340px;
+  box-shadow: 0 8px 40px rgba(30,50,120,0.14);
+}
+.lc-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.lc-icon { font-size: 1.7rem; }
+.lc-title { font-size: 1.2rem; font-weight: 800; color: #1a2340; }
+.lc-sub { font-size: 0.82rem; color: #64748b; margin-bottom: 22px; }
+
+.input-wrap {
+  display: flex; align-items: center;
+  border: 1.5px solid #e2e8f0; border-radius: 10px;
+  padding: 0 14px; background: #f8fafc; margin-bottom: 12px;
+  transition: border-color .15s;
+}
+.input-wrap:focus-within { border-color: #4f6ef7; background: #fff; }
+.input-icon { font-size: 0.95rem; color: #94a3b8; margin-right: 8px; flex-shrink: 0; }
+.input-wrap input {
+  border: none; background: transparent;
+  padding: 12px 0; font-size: 0.88rem; width: 100%;
+  outline: none; font-family: 'Inter', sans-serif; color: #1a2340;
+}
+.input-wrap input::placeholder { color: #94a3b8; }
+
+.btn-lc-login {
+  width: 100%; background: #1a2340; color: #fff;
+  border: none; border-radius: 10px; padding: 13px;
+  font-size: 0.95rem; font-weight: 700; cursor: pointer;
+  margin-top: 4px; transition: background .15s;
+}
+.btn-lc-login:hover { background: #4f6ef7; }
+
+.or-row {
+  text-align: center; color: #94a3b8; font-size: 0.8rem;
+  margin: 14px 0; position: relative;
+}
+.or-row::before, .or-row::after {
+  content: ''; position: absolute; top: 50%;
+  width: 44%; height: 1px; background: #e2e8f0;
+}
+.or-row::before { left: 0; } .or-row::after { right: 0; }
+
+.btn-lc-create {
+  width: 100%; background: #fff; color: #1a2340;
+  border: 1.5px solid #e2e8f0; border-radius: 10px;
+  padding: 12px; font-size: 0.88rem; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+}
+.btn-lc-create:hover { border-color: #4f6ef7; color: #4f6ef7; }
+
+/* ── HOW IT WORKS ── */
+.how-section {
+  background: #f8fafc;
+  padding: 52px 48px;
+  display: flex; align-items: flex-start; gap: 0;
+}
+.how-left { min-width: 230px; padding-right: 48px; }
+.how-title { font-size: 1.55rem; font-weight: 800; color: #1a2340; margin-bottom: 10px; }
+.how-sub { font-size: 0.88rem; color: #64748b; line-height: 1.65; margin-bottom: 14px; }
+.how-line { width: 38px; height: 3px; background: #4f6ef7; border-radius: 2px; }
+
+.how-steps { display: flex; align-items: center; gap: 0; flex: 1; }
+.how-step { flex: 1; text-align: center; padding: 0 12px; }
+.step-circle {
+  width: 62px; height: 62px; border-radius: 50%;
+  background: #eef2ff; display: flex; align-items: center;
+  justify-content: center; font-size: 1.6rem;
+  margin: 0 auto 14px;
+}
+.step-title { font-size: 0.9rem; font-weight: 700; color: #1a2340; margin-bottom: 6px; }
+.step-desc { font-size: 0.78rem; color: #64748b; line-height: 1.55; }
+.step-arrow { font-size: 1.4rem; color: #94a3b8; flex-shrink: 0; }
+
+/* ── FOOTER ── */
+.home-footer {
+  background: #1a2340;
+  padding: 18px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.home-footer span { font-size: 0.82rem; color: #94a3b8; }
+</style>
+</head>
+<body>
+{% set mode = mode if mode is defined else 'login' %}
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-brand">
+    <div class="brand-logo">💊</div>
+    <div class="brand-text-wrap">
+      <span class="brand-text">MediTrack</span>
+      <span class="brand-sub">Smarter Inventory. Safer Homes.</span>
+    </div>
+  </div>
+  <div class="navbar-links">
+    <a href="#" class="nav-a active">Home</a>
+    <a href="#how" class="nav-a">About</a>
+    <a href="#login-card" class="btn-login">Login</a>
+    <a href="#login-card" class="btn-signup">Sign Up</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- LEFT -->
+  <div class="hero-left">
+    <div class="hero-badge">AI-Powered Medicine Inventory Management</div>
+    <h1 class="hero-title">
+      Track Today,<br>
+      <span class="blue">Stay Prepared</span> Tomorrow
+    </h1>
+    <p class="hero-desc">
+      MediTrack helps you manage your medicine and first-aid inventory
+      with the power of machine learning. It identifies items that need
+      attention — whether it's an approaching expiry date or a low stock level.
+    </p>
+    <div class="feat-row">
+      <div class="feat-item">
+        <div class="feat-icon-wrap" style="background:#eef2ff;">📅</div>
+        <div class="feat-name">Check Expiry</div>
+        <div class="feat-desc">Get notified about medicines nearing their expiry date.</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon-wrap" style="background:#eff6ff;">📦</div>
+        <div class="feat-name">Restock Soon</div>
+        <div class="feat-desc">Identify items with low stock levels.</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon-wrap" style="background:#f0fdf4;">✅</div>
+        <div class="feat-name">No Immediate Action</div>
+        <div class="feat-desc">Keep track of items that are all good.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT – login card -->
+  <div class="hero-right">
+    <div class="login-card" id="login-card">
+      <div class="lc-head">
+        <div class="lc-icon">💊</div>
+        <div class="lc-title" id="card-title">Welcome Back!</div>
+      </div>
+      <div class="lc-sub" id="card-sub">Log in to your account to continue managing your inventory.</div>
+
+      {% if error %}
+      <div style="background:#fff0f0;color:#ef4444;border-radius:8px;padding:10px 14px;
+                  font-size:0.82rem;font-weight:600;margin-bottom:12px;">⚠️ {{ error }}</div>
+      {% endif %}
+
+      <!-- LOGIN FORM -->
+      <form action="/login" method="POST" id="login-form"
+            style="display:{{ 'none' if mode=='signup' else 'block' }}">
+        <div class="input-wrap">
+          <span class="input-icon">✉️</span>
+          <input type="text" name="email" placeholder="Email Address" required>
+        </div>
+        <div class="input-wrap">
+          <span class="input-icon">🔒</span>
+          <input type="password" name="password" id="pw-login" placeholder="Password">
+          <span class="input-icon" style="margin-left:auto;cursor:pointer;"
+                onclick="togglePw('pw-login',this)">👁️</span>
+        </div>
+        <button type="submit" class="btn-lc-login">Login</button>
+      </form>
+
+      <!-- SIGNUP FORM -->
+      <form action="/signup" method="POST" id="signup-form"
+            style="display:{{ 'block' if mode=='signup' else 'none' }}">
+        <div class="input-wrap">
+          <span class="input-icon">👤</span>
+          <input type="text" name="email" placeholder="Full Name or Email" required>
+        </div>
+        <div class="input-wrap">
+          <span class="input-icon">🔒</span>
+          <input type="password" name="password" id="pw-signup" placeholder="Create Password" required>
+          <span class="input-icon" style="margin-left:auto;cursor:pointer;"
+                onclick="togglePw('pw-signup',this)">👁️</span>
+        </div>
+        <button type="submit" class="btn-lc-login">Create Account</button>
+      </form>
+
+      <div class="or-row">OR</div>
+      <button class="btn-lc-create" id="toggle-btn" onclick="toggleMode()">
+        👤 &nbsp; <span id="toggle-label">{{ 'Back to Login' if mode=='signup' else 'Create New Account' }}</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="how-left">
+    <div class="how-title">How It Works</div>
+    <div class="how-sub">Just a few simple steps to keep your medicine inventory in check.</div>
+    <div class="how-line"></div>
+  </div>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="step-circle">📋</div>
+      <div class="step-title">1. Enter Details</div>
+      <div class="step-desc">Add medicine information like category, expiry days, quantity and more.</div>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="how-step">
+      <div class="step-circle">🧠</div>
+      <div class="step-title">2. AI Analysis</div>
+      <div class="step-desc">Our Decision Tree model analyzes the data and predicts the priority.</div>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="how-step">
+      <div class="step-circle">🖥️</div>
+      <div class="step-title">3. Get Results</div>
+      <div class="step-desc">View the prediction, action suggestions and explore model insights.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="home-footer">
+  <span>🛡️ &nbsp; Simple &nbsp;|&nbsp; Smart &nbsp;|&nbsp; Useful</span>
+  <span>🏠 &nbsp; Better inventory management for a healthier tomorrow</span>
+  <span>♥ &nbsp; Because your health matters</span>
+</footer>
+
+<script>
+function toggleMode() {
+  const lf = document.getElementById('login-form');
+  const sf = document.getElementById('signup-form');
+  const title = document.getElementById('card-title');
+  const sub   = document.getElementById('card-sub');
+  const lbl   = document.getElementById('toggle-label');
+  const isLogin = lf.style.display !== 'none';
+  if (isLogin) {
+    lf.style.display = 'none';
+    sf.style.display = 'block';
+    title.textContent = 'Create Account';
+    sub.textContent   = 'Sign up to start managing your medicine inventory.';
+    lbl.textContent   = 'Back to Login';
+  } else {
+    lf.style.display = 'block';
+    sf.style.display = 'none';
+    title.textContent = 'Welcome Back!';
+    sub.textContent   = 'Log in to your account to continue managing your inventory.';
+    lbl.textContent   = 'Create New Account';
+  }
+}
+function togglePw(id, el) {
+  const inp = document.getElementById(id);
+  if (inp.type === 'password') { inp.type = 'text';     el.textContent = '🙈'; }
+  else                         { inp.type = 'password'; el.textContent = '👁️'; }
+}
+</script>
+</body>
+</html>

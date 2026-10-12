@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Hello, {{ user }}! 👋{% endblock %}
+{% block page_sub %}Here's a live overview of your medicine inventory.{% endblock %}
+
+{% block content %}
+<!-- Metric Cards -->
+<div class="metrics-grid" style="margin-bottom:22px;">
+  {% for icon,label,val,color,bg,border in [
+    ("💊","Total Medicines",total,"#4f6ef7","#eef2ff","#4f6ef7"),
+    ("⏰","Check Expiry",n_exp,"#d97706","#fffbeb","#f59e0b"),
+    ("⚠️","Restock Soon",n_rst,"#ef4444","#fff0f0","#ef4444"),
+    ("✅","No Immediate Action",n_ok,"#16a34a","#f0fdf4","#22c55e")
+  ] %}
+  <div class="metric-card" style="border-left:4px solid {{ border }};position:relative;overflow:hidden;">
+    <div class="metric-icon" style="background:{{ bg }};font-size:1.6rem;">{{ icon }}</div>
+    <div>
+      <div class="metric-label">{{ label }}</div>
+      <div class="metric-num count-up" data-target="{{ val }}" style="color:{{ color }};">0</div>
+      <div class="metric-sub">updated just now</div>
+    </div>
+    <div style="position:absolute;right:-10px;bottom:-10px;font-size:3.5rem;opacity:0.05;">{{ icon }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Charts Row -->
+<div class="charts-row" style="margin-bottom:22px;">
+  <!-- Donut -->
+  <div class="card">
+    <div class="card-title">🛡️ Priority Overview</div>
+    <div style="display:flex;align-items:center;gap:20px;">
+      <canvas id="donutChart" width="160" height="160"></canvas>
+      <div class="donut-legend" style="flex:1;">
+        <div class="legend-item"><span class="dot" style="background:#f59e0b;"></span>Check Expiry <b>{{ n_exp }}</b></div>
+        <div class="legend-item" style="margin-top:8px;"><span class="dot" style="background:#ef4444;"></span>Restock Soon <b>{{ n_rst }}</b></div>
+        <div class="legend-item" style="margin-top:8px;"><span class="dot" style="background:#22c55e;"></span>No Action <b>{{ n_ok }}</b></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bar chart -->
+  <div class="card">
+    <div class="card-title">📦 Items by Category</div>
+    <canvas id="barChart" height="180"></canvas>
+  </div>
+
+  <!-- Right panel -->
+  <div class="right-panel">
+    <div class="predict-card" style="background:linear-gradient(135deg,#1a2340 0%,#2d3a5c 100%);border-radius:16px;padding:22px;">
+      <div style="font-size:2rem;margin-bottom:10px;">🩺</div>
+      <div style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">Add & Predict</div>
+      <div style="font-size:0.78rem;color:#94a3b8;margin-bottom:14px;line-height:1.5;">Enter medicine details to get an instant AI priority prediction.</div>
+      <a href="{{ url_for('add_medicine') }}" class="btn-predict" style="background:#4f6ef7;">➕ Add Medicine</a>
+      <a href="{{ url_for('predictions') }}" class="btn-predict" style="background:transparent;border:1px solid rgba(255,255,255,0.2);margin-top:8px;">🔮 View Predictions</a>
+    </div>
+    <div class="card" style="margin-top:14px;">
+      <div class="card-title">💡 Quick Tips</div>
+      <ul style="padding-left:18px;font-size:0.84rem;color:#475569;line-height:2.1;">
+        <li>Check expiry dates regularly.</li>
+        <li>Keep stock above minimum level.</li>
+        <li>Prioritize essential items.</li>
+        <li>Monitor opened medicines closely.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Row -->
+<div class="bottom-row">
+  <!-- Recent inventory table -->
+  <div class="card" style="flex:1.5;">
+    <div class="card-title-row">
+      <div class="card-title">🕐 Recent Inventory Records</div>
+      <a href="{{ url_for('view_inventory') }}" class="view-all">View All →</a>
+    </div>
+    <table class="inv-table">
+      <thead>
+        <tr><th>#</th><th>Medicine</th><th>Category</th><th>Days to Expiry</th><th>Qty</th><th>Priority</th></tr>
+      </thead>
+      <tbody>
+        {% set icons = {"Tablet":"💊","Syrup":"🧴","Ointment":"🫙","First Aid":"🩹","Supplement":"💉"} %}
+        {% for row in recent %}
+        <tr>
+          <td style="color:#94a3b8;font-size:0.8rem;">{{ loop.index }}</td>
+          <td><b>{{ row.get('med_name', row.item_id) }}</b><br><span style="font-size:0.75rem;color:#94a3b8;">{{ row.item_id }}</span></td>
+          <td>{{ icons.get(row.item_category,"💊") }} {{ row.item_category }}</td>
+          <td>
+            {% if row.days_until_expiry <= 0 %}<span style="color:#ef4444;font-weight:700;">Expired</span>
+            {% elif row.days_until_expiry <= 30 %}<span style="color:#d97706;font-weight:600;">{{ row.days_until_expiry }}d ⚠️</span>
+            {% else %}<span style="color:#16a34a;">{{ row.days_until_expiry }}d</span>{% endif %}
+          </td>
+          <td>{{ row.quantity_remaining }}</td>
+          <td>
+            {% if row.inventory_priority == "Check Expiry" %}<span class="badge badge-e">Check Expiry</span>
+            {% elif row.inventory_priority == "Restock Soon" %}<span class="badge badge-r">Restock Soon</span>
+            {% else %}<span class="badge badge-o">No Action</span>{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Model performance -->
+  <div style="flex:1;display:flex;flex-direction:column;gap:14px;">
+    <div class="card">
+      <div class="card-title">📊 Model Performance</div>
+      <div class="perf-grid">
+        {% for lbl,val,bg,color in [("Accuracy",metrics.accuracy,"#f0fdf4","#16a34a"),("Precision",metrics.precision,"#eff6ff","#2563eb"),("Recall",metrics.recall,"#fefce8","#ca8a04"),("F1 Score",metrics.f1,"#fdf2f8","#9333ea")] %}
+        <div class="perf-item" style="background:{{ bg }};">
+          <div class="perf-label">{{ lbl }}</div>
+          <div class="perf-val" style="color:{{ color }};">{{ val }}%</div>
+          <div style="margin-top:6px;height:4px;background:#e2e8f0;border-radius:2px;">
+            <div style="height:4px;width:{{ val }}%;background:{{ color }};border-radius:2px;transition:width 1s;"></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="note-bar">
+      🛡️ <span><b>Note:</b> Predictions are for inventory management only — not medical advice.</span>
+    </div>
+    <div style="text-align:right;font-size:0.8rem;color:#94a3b8;font-style:italic;">
+      Small steps towards<br>a healthier home ♥
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Count-up animation
+document.querySelectorAll('.count-up').forEach(el => {
+  const target = parseInt(el.dataset.target);
+  let current = 0;
+  const step = Math.ceil(target / 40);
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = current;
+    if (current >= target) clearInterval(timer);
+  }, 25);
+});
+
+// Donut chart
+new Chart(document.getElementById('donutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Check Expiry','Restock Soon','No Immediate Action'],
+    datasets: [{ data: [{{ n_exp }},{{ n_rst }},{{ n_ok }}],
+      backgroundColor: ['#f59e0b','#ef4444','#22c55e'],
+      borderWidth: 3, borderColor: '#fff', hoverOffset: 8 }]
+  },
+  options: {
+    cutout: '68%',
+    plugins: { legend: { display:false }, tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}` }}},
+    animation: { animateRotate: true, duration: 900 }
+  },
+  plugins: [{
+    id: 'centerText',
+    beforeDraw(chart) {
+      const {ctx, chartArea:{width,height}} = chart;
+      ctx.save();
+      ctx.font = 'bold 20px Inter'; ctx.fillStyle = '#1a2340';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('{{ total }}', width/2, height/2 - 10);
+      ctx.font = '10px Inter'; ctx.fillStyle = '#94a3b8';
+      ctx.fillText('Total', width/2, height/2 + 10);
+      ctx.restore();
+    }
+  }]
+});
+
+// Bar chart
+const cats = {{ cat_counts | tojson }};
+new Chart(document.getElementById('barChart'), {
+  type: 'bar',
+  data: {
+    labels: Object.keys(cats),
+    datasets: [{ data: Object.values(cats),
+      backgroundColor: ['#6366f1','#a78bfa','#f87171','#fbbf24','#34d399'],
+      borderRadius: 8, borderSkipped: false }]
+  },
+  options: {
+    plugins: { legend: { display:false } },
+    scales: {
+      y: { grid: { color:'#f1f5f9' }, ticks: { font:{ size:11 } } },
+      x: { grid: { display:false }, ticks: { font:{ size:11 } } }
+    },
+    animation: { duration: 900 }
+  }
+});
+</script>
+{% endblock %}

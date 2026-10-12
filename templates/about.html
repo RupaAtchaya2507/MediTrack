@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block page_title %}ℹ️ About MediTrack{% endblock %}
+{% block page_sub %}An AI-powered medicine inventory management prototype.{% endblock %}
+
+{% block content %}
+<div style="display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:start;">
+
+  <!-- Left: Project info -->
+  <div style="display:flex;flex-direction:column;gap:16px;">
+
+    <!-- Hero card -->
+    <div class="card" style="background:linear-gradient(135deg,#1a2340 0%,#2d3a5c 100%);color:white;padding:28px;">
+      <div style="font-size:2.8rem;margin-bottom:12px;">💊</div>
+      <div style="font-size:1.3rem;font-weight:800;margin-bottom:8px;">MediTrack</div>
+      <div style="font-size:0.88rem;color:#94a3b8;line-height:1.7;">
+        An educational FAI case study prototype that uses a <b style="color:#a5b4fc;">Decision Tree Classifier</b>
+        to help prioritize medicine inventory management — identifying items that need expiry checks,
+        restocking, or no immediate action.
+      </div>
+    </div>
+
+    <!-- Details grid -->
+    <div class="card">
+      <div class="card-title">🔧 Project Details</div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        {% for icon,label,val in [
+          ("🌳","ML Model","Decision Tree Classifier (max_depth = 5)"),
+          ("📂","Dataset","300 medicine records"),
+          ("🎯","Classes","Check Expiry · Restock Soon · No Immediate Action"),
+          ("📐","Features","Category, Days Until Expiry, Quantity, Min Stock, Opened, Essential"),
+          ("⚙️","Framework","Flask + HTML / CSS / JS + Chart.js"),
+          ("🧪","Train/Test Split","80% training · 20% testing")
+        ] %}
+        <div style="display:flex;align-items:flex-start;gap:14px;padding:12px 0;
+          border-bottom:1px solid #f1f5f9;{% if loop.last %}border-bottom:none;{% endif %}">
+          <div style="font-size:1.2rem;width:28px;flex-shrink:0;">{{ icon }}</div>
+          <div>
+            <div style="font-size:0.75rem;font-weight:700;color:#94a3b8;margin-bottom:2px;">{{ label }}</div>
+            <div style="font-size:0.9rem;color:#1a2340;font-weight:500;">{{ val }}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Tech stack + disclaimer -->
+  <div style="display:flex;flex-direction:column;gap:16px;">
+
+    <!-- Tech stack -->
+    <div class="card">
+      <div class="card-title">🛠️ Tech Stack</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        {% for icon,name,desc,color in [
+          ("🐍","Python","Core language","#3b82f6"),
+          ("🌶️","Flask","Web framework","#ef4444"),
+          ("🌳","scikit-learn","ML model training","#f59e0b"),
+          ("🐼","pandas","Data processing","#8b5cf6"),
+          ("📊","Chart.js","Interactive charts","#22c55e"),
+          ("🎨","HTML/CSS/JS","Frontend UI","#ec4899")
+        ] %}
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;
+                    background:#f8fafc;border-radius:10px;border-left:3px solid {{ color }};">
+          <span style="font-size:1.3rem;">{{ icon }}</span>
+          <div>
+            <div style="font-size:0.88rem;font-weight:700;color:#1a2340;">{{ name }}</div>
+            <div style="font-size:0.75rem;color:#64748b;">{{ desc }}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="card" style="background:#fffbeb;border:1px solid #fde68a;">
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <div style="font-size:1.5rem;">⚠️</div>
+        <div>
+          <div style="font-size:0.88rem;font-weight:700;color:#92400e;margin-bottom:6px;">Disclaimer</div>
+          <div style="font-size:0.82rem;color:#78350f;line-height:1.65;">
+            This is an <b>educational prototype only</b>. Predictions are for inventory
+            management purposes and do not constitute medical advice. Always consult a
+            qualified pharmacist or healthcare professional for medical decisions.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Made with -->
+    <div class="card" style="text-align:center;padding:20px;">
+      <div style="font-size:2rem;margin-bottom:8px;">♥</div>
+      <div style="font-size:0.88rem;color:#64748b;line-height:1.7;">
+        Built as a <b style="color:#1a2340;">Foundations of AI</b> case study.<br>
+        Better inventory management for a healthier tomorrow.
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Add Medicine{% endblock %}
+{% block page_title %}➕ Add Medicine{% endblock %}
+{% block page_sub %}Add a new medicine to the inventory.{% endblock %}
+
+{% block content %}
+{% if success %}
+<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px 20px;margin-bottom:20px;color:#16a34a;font-weight:600;display:flex;align-items:center;gap:10px;">
+  ✅ {{ success }}
+</div>
+{% endif %}
+
+<div class="card" style="max-width:700px;">
+  <div class="card-title">Medicine Details</div>
+  <form method="POST" class="med-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Medicine Name</label>
+        <input type="text" name="med_name" placeholder="e.g. Paracetamol" class="form-ctrl">
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select name="category" class="form-ctrl">
+          {% for cat in ["Tablet","Syrup","Ointment","First Aid","Supplement"] %}
+          <option>{{ cat }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Days Until Expiry</label>
+        <input type="number" name="days" value="30" class="form-ctrl">
+      </div>
+      <div class="form-group">
+        <label>Quantity Remaining</label>
+        <input type="number" name="qty" value="5" class="form-ctrl">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Minimum Stock Level</label>
+        <input type="number" name="min_stock" value="5" class="form-ctrl">
+      </div>
+      <div class="form-group">
+        <label>Is Opened?</label>
+        <select name="opened" class="form-ctrl">
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Essential Item?</label>
+      <select name="essential" class="form-ctrl" style="max-width:200px;">
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+    <button type="submit" class="btn-submit">✨ Add to Inventory</button>
+  </form>
+</div>
+{% endblock %}

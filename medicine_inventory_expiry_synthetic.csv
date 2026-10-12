@@ -1,0 +1,301 @@
+item_id,item_category,days_until_expiry,quantity_remaining,minimum_stock_level,is_opened,essential_item,inventory_priority
+MED001,First Aid,468,13,8,1,1,No Immediate Action
+MED002,Tablet,370,30,12,1,1,No Immediate Action
+MED003,Tablet,609,13,9,0,1,No Immediate Action
+MED004,Ointment,276,25,10,0,0,No Immediate Action
+MED005,Syrup,645,1,14,1,1,Restock Soon
+MED006,First Aid,503,10,3,1,1,No Immediate Action
+MED007,First Aid,548,6,7,0,0,Restock Soon
+MED008,Tablet,535,21,14,1,1,No Immediate Action
+MED009,Tablet,659,11,3,0,0,No Immediate Action
+MED010,Tablet,492,14,7,0,1,No Immediate Action
+MED011,Syrup,92,25,11,1,0,No Immediate Action
+MED012,First Aid,301,24,13,0,0,No Immediate Action
+MED013,Ointment,454,4,13,0,0,Restock Soon
+MED014,First Aid,563,20,9,1,1,No Immediate Action
+MED015,Syrup,354,17,3,0,0,No Immediate Action
+MED016,Ointment,468,14,14,1,1,No Immediate Action
+MED017,Ointment,400,17,4,1,0,No Immediate Action
+MED018,Tablet,234,13,15,0,0,Restock Soon
+MED019,First Aid,-4,7,13,0,0,Check Expiry
+MED020,Tablet,300,20,4,1,1,No Immediate Action
+MED021,Ointment,281,12,8,1,0,No Immediate Action
+MED022,Tablet,50,2,13,1,1,Restock Soon
+MED023,Tablet,655,15,15,0,1,No Immediate Action
+MED024,Syrup,96,11,6,0,1,No Immediate Action
+MED025,Tablet,700,2,7,0,1,Restock Soon
+MED026,Supplement,346,21,8,0,1,No Immediate Action
+MED027,First Aid,168,22,13,0,0,No Immediate Action
+MED028,Tablet,310,27,4,0,0,No Immediate Action
+MED029,Tablet,585,17,10,0,1,No Immediate Action
+MED030,First Aid,344,22,11,0,1,No Immediate Action
+MED031,Ointment,42,20,11,0,0,No Immediate Action
+MED032,Tablet,106,15,5,0,0,No Immediate Action
+MED033,Tablet,103,18,13,0,1,No Immediate Action
+MED034,Ointment,310,10,10,1,0,No Immediate Action
+MED035,Supplement,288,14,9,1,0,No Immediate Action
+MED036,Syrup,480,15,8,1,1,No Immediate Action
+MED037,Syrup,584,8,15,0,1,Restock Soon
+MED038,Syrup,186,0,7,1,1,Restock Soon
+MED039,Tablet,199,17,7,0,1,No Immediate Action
+MED040,Tablet,155,20,12,1,1,No Immediate Action
+MED041,Tablet,437,28,15,0,0,No Immediate Action
+MED042,Syrup,386,11,7,1,1,No Immediate Action
+MED043,Tablet,124,29,11,0,1,No Immediate Action
+MED044,Tablet,724,29,5,0,0,No Immediate Action
+MED045,Syrup,707,30,4,1,1,No Immediate Action
+MED046,Supplement,140,27,4,1,0,No Immediate Action
+MED047,First Aid,225,20,8,0,0,No Immediate Action
+MED048,First Aid,259,8,3,1,0,No Immediate Action
+MED049,Tablet,21,25,14,0,0,Check Expiry
+MED050,Ointment,517,27,3,0,0,No Immediate Action
+MED051,First Aid,213,30,9,1,0,No Immediate Action
+MED052,Tablet,102,7,6,0,1,No Immediate Action
+MED053,Tablet,195,15,15,1,1,No Immediate Action
+MED054,Tablet,627,24,3,1,1,No Immediate Action
+MED055,Tablet,300,3,10,1,0,Restock Soon
+MED056,Tablet,70,15,9,1,1,No Immediate Action
+MED057,Tablet,700,28,9,0,1,No Immediate Action
+MED058,Ointment,609,3,12,0,0,Restock Soon
+MED059,Supplement,96,18,5,1,1,No Immediate Action
+MED060,Syrup,452,24,14,0,0,No Immediate Action
+MED061,First Aid,160,24,9,0,1,No Immediate Action
+MED062,Ointment,680,26,12,1,0,No Immediate Action
+MED063,Tablet,675,13,4,1,1,No Immediate Action
+MED064,Syrup,374,7,6,0,1,No Immediate Action
+MED065,First Aid,699,3,14,0,1,Restock Soon
+MED066,Tablet,116,25,7,0,0,No Immediate Action
+MED067,Supplement,425,5,5,0,0,No Immediate Action
+MED068,Tablet,381,0,12,0,0,Restock Soon
+MED069,Tablet,296,18,9,1,0,No Immediate Action
+MED070,Tablet,719,15,12,1,1,No Immediate Action
+MED071,Tablet,345,5,14,0,0,Restock Soon
+MED072,Ointment,692,12,6,0,0,No Immediate Action
+MED073,Syrup,649,3,4,1,0,Restock Soon
+MED074,Supplement,494,3,13,1,1,Restock Soon
+MED075,Supplement,214,24,10,1,1,No Immediate Action
+MED076,First Aid,532,4,13,1,1,Restock Soon
+MED077,First Aid,604,14,13,0,1,No Immediate Action
+MED078,Tablet,16,4,8,0,0,Check Expiry
+MED079,Tablet,227,11,9,0,0,No Immediate Action
+MED080,Tablet,109,21,6,0,1,No Immediate Action
+MED081,Supplement,620,14,13,0,1,No Immediate Action
+MED082,First Aid,342,20,5,1,1,No Immediate Action
+MED083,Ointment,25,8,5,1,0,Check Expiry
+MED084,Ointment,353,26,14,0,1,No Immediate Action
+MED085,Tablet,443,22,10,0,1,No Immediate Action
+MED086,Tablet,700,29,5,1,1,No Immediate Action
+MED087,First Aid,728,24,15,1,0,No Immediate Action
+MED088,Ointment,8,2,9,1,0,Check Expiry
+MED089,Ointment,-25,17,9,0,1,Check Expiry
+MED090,First Aid,670,24,9,0,1,No Immediate Action
+MED091,Supplement,613,3,13,0,0,Restock Soon
+MED092,Ointment,524,12,14,1,1,Restock Soon
+MED093,Tablet,531,27,13,1,0,No Immediate Action
+MED094,Tablet,375,9,7,0,0,No Immediate Action
+MED095,Supplement,392,13,12,0,1,No Immediate Action
+MED096,Syrup,692,29,7,1,1,No Immediate Action
+MED097,Tablet,466,30,3,1,1,No Immediate Action
+MED098,Tablet,176,26,14,1,0,No Immediate Action
+MED099,Ointment,-6,21,10,0,1,Check Expiry
+MED100,First Aid,298,9,15,0,0,Restock Soon
+MED101,Tablet,362,28,12,1,0,No Immediate Action
+MED102,Supplement,3,27,11,0,1,Check Expiry
+MED103,Tablet,476,30,3,1,1,No Immediate Action
+MED104,Tablet,488,27,14,0,0,No Immediate Action
+MED105,Tablet,620,24,13,0,1,No Immediate Action
+MED106,Ointment,662,1,3,0,0,Restock Soon
+MED107,Ointment,715,24,15,0,1,No Immediate Action
+MED108,Tablet,479,24,15,1,1,No Immediate Action
+MED109,Ointment,593,25,8,0,0,No Immediate Action
+MED110,Tablet,500,15,10,1,1,No Immediate Action
+MED111,First Aid,311,4,13,1,0,Restock Soon
+MED112,Tablet,46,22,9,1,1,No Immediate Action
+MED113,Tablet,23,19,3,0,1,Check Expiry
+MED114,First Aid,283,5,7,0,0,Restock Soon
+MED115,Supplement,420,14,10,1,1,No Immediate Action
+MED116,Ointment,309,4,6,1,0,Restock Soon
+MED117,Ointment,379,21,6,1,1,No Immediate Action
+MED118,Tablet,321,15,11,0,1,No Immediate Action
+MED119,Tablet,710,4,15,0,0,Restock Soon
+MED120,Syrup,567,18,8,1,0,No Immediate Action
+MED121,Syrup,609,6,15,1,0,Restock Soon
+MED122,Tablet,197,12,9,0,0,No Immediate Action
+MED123,Ointment,237,17,10,1,1,No Immediate Action
+MED124,Ointment,439,9,6,1,1,No Immediate Action
+MED125,Syrup,373,19,9,0,1,No Immediate Action
+MED126,First Aid,394,27,4,1,1,No Immediate Action
+MED127,Syrup,174,24,6,0,1,No Immediate Action
+MED128,Syrup,1,3,3,0,1,Check Expiry
+MED129,Tablet,29,8,10,0,0,Check Expiry
+MED130,Tablet,20,23,14,0,1,Check Expiry
+MED131,First Aid,285,11,12,0,1,Restock Soon
+MED132,Tablet,356,11,9,1,1,No Immediate Action
+MED133,First Aid,293,9,13,1,1,Restock Soon
+MED134,Syrup,674,19,7,0,0,No Immediate Action
+MED135,Syrup,325,5,12,0,1,Restock Soon
+MED136,Supplement,699,17,5,1,1,No Immediate Action
+MED137,Tablet,352,13,13,0,0,No Immediate Action
+MED138,First Aid,1,13,9,0,0,Check Expiry
+MED139,Tablet,155,28,15,0,0,No Immediate Action
+MED140,Tablet,117,15,15,1,1,No Immediate Action
+MED141,Tablet,174,7,13,1,1,Restock Soon
+MED142,Ointment,279,20,13,1,0,No Immediate Action
+MED143,Tablet,535,16,14,0,1,No Immediate Action
+MED144,Syrup,374,23,11,1,1,No Immediate Action
+MED145,Supplement,202,18,4,1,0,No Immediate Action
+MED146,Syrup,615,16,9,0,0,No Immediate Action
+MED147,Supplement,448,19,8,0,0,No Immediate Action
+MED148,Tablet,167,0,10,1,0,Restock Soon
+MED149,Tablet,78,18,10,0,0,No Immediate Action
+MED150,First Aid,370,19,12,1,1,No Immediate Action
+MED151,Syrup,719,23,11,1,1,No Immediate Action
+MED152,Supplement,444,24,8,1,0,No Immediate Action
+MED153,First Aid,585,13,11,1,1,No Immediate Action
+MED154,Supplement,51,30,5,0,1,No Immediate Action
+MED155,First Aid,454,10,3,0,0,No Immediate Action
+MED156,First Aid,703,15,14,1,1,No Immediate Action
+MED157,Supplement,154,12,3,1,0,No Immediate Action
+MED158,Syrup,381,24,6,1,1,No Immediate Action
+MED159,Tablet,11,11,15,0,0,Check Expiry
+MED160,Ointment,550,22,11,1,1,No Immediate Action
+MED161,First Aid,269,24,7,0,0,No Immediate Action
+MED162,Ointment,147,26,8,0,1,No Immediate Action
+MED163,Ointment,373,0,12,0,1,Restock Soon
+MED164,Ointment,163,7,8,1,0,Restock Soon
+MED165,First Aid,656,9,12,1,0,Restock Soon
+MED166,Tablet,388,27,14,0,0,No Immediate Action
+MED167,Tablet,312,22,8,1,1,No Immediate Action
+MED168,Tablet,559,12,9,0,1,No Immediate Action
+MED169,Supplement,621,21,12,1,0,No Immediate Action
+MED170,Supplement,137,15,7,0,0,No Immediate Action
+MED171,Tablet,237,6,10,0,1,Restock Soon
+MED172,Ointment,640,10,8,0,1,No Immediate Action
+MED173,First Aid,352,16,15,0,1,No Immediate Action
+MED174,Tablet,396,10,14,1,1,Restock Soon
+MED175,First Aid,134,18,11,1,0,No Immediate Action
+MED176,Tablet,198,9,5,0,1,No Immediate Action
+MED177,Tablet,16,17,6,1,1,Check Expiry
+MED178,Syrup,625,14,15,1,1,Restock Soon
+MED179,First Aid,481,27,6,1,0,No Immediate Action
+MED180,Ointment,213,3,8,1,1,Restock Soon
+MED181,Syrup,681,13,4,0,1,No Immediate Action
+MED182,Tablet,193,1,3,0,0,Restock Soon
+MED183,Syrup,170,15,13,0,0,No Immediate Action
+MED184,Tablet,453,11,13,0,1,Restock Soon
+MED185,Tablet,713,9,9,0,0,No Immediate Action
+MED186,Tablet,190,3,8,1,0,Restock Soon
+MED187,Syrup,179,15,3,0,0,No Immediate Action
+MED188,First Aid,325,26,9,0,0,No Immediate Action
+MED189,Tablet,665,14,14,1,0,No Immediate Action
+MED190,Tablet,157,28,9,0,1,No Immediate Action
+MED191,First Aid,115,4,10,0,0,Restock Soon
+MED192,Supplement,38,0,15,0,0,Restock Soon
+MED193,Tablet,507,19,9,0,1,No Immediate Action
+MED194,Ointment,493,26,9,0,1,No Immediate Action
+MED195,Ointment,318,5,14,1,1,Restock Soon
+MED196,Tablet,159,28,10,0,1,No Immediate Action
+MED197,Supplement,30,11,12,1,0,Check Expiry
+MED198,First Aid,55,18,6,0,0,No Immediate Action
+MED199,Tablet,596,2,14,0,0,Restock Soon
+MED200,Tablet,504,5,11,1,1,Restock Soon
+MED201,First Aid,598,9,4,1,1,No Immediate Action
+MED202,Tablet,560,4,11,1,0,Restock Soon
+MED203,Syrup,62,30,6,0,0,No Immediate Action
+MED204,Supplement,409,18,8,0,1,No Immediate Action
+MED205,Supplement,285,16,5,1,0,No Immediate Action
+MED206,Tablet,310,18,4,0,1,No Immediate Action
+MED207,First Aid,114,0,3,1,0,Restock Soon
+MED208,First Aid,608,7,11,1,1,Restock Soon
+MED209,Syrup,542,21,9,1,1,No Immediate Action
+MED210,First Aid,516,30,4,0,1,No Immediate Action
+MED211,Tablet,-4,24,7,1,0,Check Expiry
+MED212,Tablet,557,27,11,0,1,No Immediate Action
+MED213,Tablet,243,29,6,0,0,No Immediate Action
+MED214,First Aid,718,28,6,0,1,No Immediate Action
+MED215,First Aid,460,27,11,0,1,No Immediate Action
+MED216,First Aid,466,22,9,1,1,No Immediate Action
+MED217,Tablet,562,28,12,1,1,No Immediate Action
+MED218,Tablet,-28,6,8,1,0,Check Expiry
+MED219,Supplement,721,11,13,1,1,Restock Soon
+MED220,Syrup,446,9,7,1,1,No Immediate Action
+MED221,Syrup,-23,18,10,1,1,Check Expiry
+MED222,Tablet,227,11,7,0,0,No Immediate Action
+MED223,Tablet,204,21,3,0,1,No Immediate Action
+MED224,Tablet,120,3,9,1,1,Restock Soon
+MED225,Tablet,333,6,15,0,1,Restock Soon
+MED226,Syrup,316,8,4,0,1,No Immediate Action
+MED227,Supplement,156,20,11,0,0,No Immediate Action
+MED228,Tablet,73,9,7,1,1,No Immediate Action
+MED229,Supplement,50,30,10,1,1,No Immediate Action
+MED230,Tablet,282,4,15,0,1,Restock Soon
+MED231,Tablet,591,26,12,1,1,No Immediate Action
+MED232,Tablet,32,7,8,0,1,Restock Soon
+MED233,Ointment,368,22,12,0,0,No Immediate Action
+MED234,Syrup,54,23,3,1,0,No Immediate Action
+MED235,Supplement,280,3,6,1,0,Restock Soon
+MED236,Tablet,105,26,11,0,0,No Immediate Action
+MED237,Syrup,110,7,14,1,1,Restock Soon
+MED238,First Aid,538,10,9,1,0,No Immediate Action
+MED239,Tablet,195,4,3,1,1,No Immediate Action
+MED240,First Aid,219,16,6,0,1,No Immediate Action
+MED241,Syrup,598,13,7,0,0,No Immediate Action
+MED242,Supplement,38,14,13,1,0,No Immediate Action
+MED243,Syrup,700,6,5,0,0,No Immediate Action
+MED244,Tablet,89,28,3,0,1,No Immediate Action
+MED245,Syrup,708,12,9,1,0,No Immediate Action
+MED246,Supplement,78,25,13,1,1,No Immediate Action
+MED247,Tablet,600,28,11,0,0,No Immediate Action
+MED248,Tablet,13,24,11,1,1,Check Expiry
+MED249,First Aid,599,6,5,1,0,No Immediate Action
+MED250,Ointment,543,0,10,1,0,Restock Soon
+MED251,Tablet,272,14,13,0,0,No Immediate Action
+MED252,Ointment,348,12,4,1,0,No Immediate Action
+MED253,First Aid,517,14,6,1,1,No Immediate Action
+MED254,Syrup,437,29,9,0,0,No Immediate Action
+MED255,Ointment,720,26,10,0,0,No Immediate Action
+MED256,Supplement,538,23,6,1,1,No Immediate Action
+MED257,Ointment,101,9,7,1,0,No Immediate Action
+MED258,First Aid,270,12,14,1,1,Restock Soon
+MED259,Syrup,521,28,7,0,1,No Immediate Action
+MED260,Tablet,500,12,9,0,0,No Immediate Action
+MED261,Tablet,217,20,4,1,1,No Immediate Action
+MED262,Tablet,645,10,13,0,1,Restock Soon
+MED263,First Aid,541,7,14,1,0,Restock Soon
+MED264,Tablet,552,4,6,0,1,Restock Soon
+MED265,Supplement,534,6,15,1,1,Restock Soon
+MED266,Supplement,413,18,12,0,1,No Immediate Action
+MED267,Tablet,516,30,9,0,1,No Immediate Action
+MED268,Tablet,380,12,12,1,1,No Immediate Action
+MED269,Syrup,104,29,14,1,0,No Immediate Action
+MED270,Syrup,506,15,8,1,0,No Immediate Action
+MED271,Tablet,276,28,15,1,1,No Immediate Action
+MED272,Supplement,-15,23,15,1,1,Check Expiry
+MED273,Syrup,446,14,12,0,1,No Immediate Action
+MED274,Tablet,202,7,9,1,0,Restock Soon
+MED275,Tablet,470,25,6,1,0,No Immediate Action
+MED276,Tablet,-1,10,8,1,1,Check Expiry
+MED277,Tablet,502,24,10,0,0,No Immediate Action
+MED278,Supplement,188,5,15,0,0,Restock Soon
+MED279,Ointment,637,28,6,1,0,No Immediate Action
+MED280,Tablet,417,24,6,0,1,No Immediate Action
+MED281,Ointment,314,3,12,1,0,Restock Soon
+MED282,Syrup,355,17,6,1,1,No Immediate Action
+MED283,Ointment,-30,30,3,1,1,Check Expiry
+MED284,Tablet,490,22,4,1,0,No Immediate Action
+MED285,Syrup,105,13,5,0,1,No Immediate Action
+MED286,Tablet,216,24,11,1,1,No Immediate Action
+MED287,Syrup,270,9,6,1,1,No Immediate Action
+MED288,Syrup,138,27,6,0,1,No Immediate Action
+MED289,Tablet,218,4,7,1,0,Restock Soon
+MED290,Tablet,142,0,4,0,1,Restock Soon
+MED291,Tablet,227,20,12,1,0,No Immediate Action
+MED292,Tablet,19,26,6,1,1,Check Expiry
+MED293,First Aid,3,2,8,0,1,Check Expiry
+MED294,Tablet,219,23,5,1,1,No Immediate Action
+MED295,Syrup,205,11,8,0,0,No Immediate Action
+MED296,First Aid,701,3,12,0,0,Restock Soon
+MED297,Tablet,3,25,3,0,1,Check Expiry
+MED298,Tablet,721,20,5,0,0,No Immediate Action
+MED299,First Aid,695,30,15,1,0,No Immediate Action
+MED300,Tablet,330,20,15,0,1,No Immediate Action

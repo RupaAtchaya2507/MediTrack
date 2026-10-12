@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block title %}Model Insights{% endblock %}
+{% block page_title %}📊 Model Insights{% endblock %}
+{% block page_sub %}Decision Tree Classifier — performance on 20% held-out test data.{% endblock %}
+
+{% block content %}
+<!-- Metric cards with progress bars -->
+<div class="metrics-grid" style="margin-bottom:24px;">
+  {% for lbl,val,bg,color,icon in [
+    ("Accuracy",  metrics.accuracy,  "#f0fdf4","#16a34a","🎯"),
+    ("Precision", metrics.precision, "#eff6ff","#2563eb","🔬"),
+    ("Recall",    metrics.recall,    "#fefce8","#ca8a04","📡"),
+    ("F1 Score",  metrics.f1,        "#fdf2f8","#9333ea","⚖️")
+  ] %}
+  <div class="card" style="background:{{ bg }};text-align:center;padding:26px 20px;border-top:3px solid {{ color }};">
+    <div style="font-size:1.8rem;margin-bottom:8px;">{{ icon }}</div>
+    <div style="font-size:0.82rem;font-weight:600;color:#64748b;margin-bottom:6px;">{{ lbl }}</div>
+    <div class="count-up-pct" data-target="{{ val }}" style="font-size:2.4rem;font-weight:800;color:{{ color }};">0%</div>
+    <div style="margin-top:10px;height:6px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;">
+      <div class="progress-bar" data-width="{{ val }}"
+           style="height:6px;width:0%;background:{{ color }};border-radius:3px;transition:width 1.2s ease;"></div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+  <!-- Confusion Matrix -->
+  <div class="card">
+    <div class="card-title">🔢 Confusion Matrix</div>
+    <div style="font-size:0.78rem;color:#94a3b8;margin-bottom:14px;">Rows = Actual · Columns = Predicted</div>
+    {% set labels = ["Check Expiry","Restock Soon","No Action"] %}
+    {% set cm_colors = [["#fef3c7","#fde68a","#fcd34d"],["#fee2e2","#fca5a5","#f87171"],["#dcfce7","#86efac","#4ade80"]] %}
+    <table style="width:100%;border-collapse:separate;border-spacing:4px;font-size:0.82rem;">
+      <thead>
+        <tr>
+          <th style="padding:8px;color:#94a3b8;font-weight:600;text-align:left;"></th>
+          {% for l in labels %}
+          <th style="padding:8px;color:#64748b;font-weight:700;text-align:center;font-size:0.75rem;">{{ l }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in range(3) %}
+        <tr>
+          <td style="padding:8px;color:#64748b;font-weight:700;font-size:0.75rem;white-space:nowrap;">{{ labels[i] }}</td>
+          {% for j in range(3) %}
+          <td style="padding:12px 8px;text-align:center;border-radius:8px;font-weight:700;
+            background:{{ '#1a2340' if i==j else '#f8fafc' }};
+            color:{{ '#ffffff' if i==j else '#475569' }};
+            font-size:{{ '1.1rem' if i==j else '0.9rem' }};">
+            {{ metrics.cm[i][j] }}
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div style="margin-top:14px;display:flex;align-items:center;gap:16px;font-size:0.78rem;color:#64748b;">
+      <span><span style="display:inline-block;width:12px;height:12px;background:#1a2340;border-radius:3px;margin-right:4px;vertical-align:middle;"></span>Correct predictions</span>
+      <span><span style="display:inline-block;width:12px;height:12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:3px;margin-right:4px;vertical-align:middle;"></span>Misclassified</span>
+    </div>
+  </div>
+
+  <!-- Feature Importance -->
+  <div class="card">
+    <div class="card-title">📊 Feature Importance</div>
+    <div style="font-size:0.78rem;color:#94a3b8;margin-bottom:14px;">Top features used by the Decision Tree</div>
+    <canvas id="featChart" height="230"></canvas>
+  </div>
+</div>
+
+<!-- Model info strip -->
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;">
+  {% for icon,label,val in [("🌳","Algorithm","Decision Tree Classifier"),("📏","Max Depth","5 levels"),("📂","Training Data","240 records (80%)")] %}
+  <div class="card" style="display:flex;align-items:center;gap:14px;padding:16px 20px;">
+    <div style="font-size:1.8rem;">{{ icon }}</div>
+    <div>
+      <div style="font-size:0.75rem;color:#94a3b8;font-weight:600;">{{ label }}</div>
+      <div style="font-size:0.92rem;font-weight:700;color:#1a2340;margin-top:2px;">{{ val }}</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Animate percentage counters
+document.querySelectorAll('.count-up-pct').forEach(el => {
+  const target = parseFloat(el.dataset.target);
+  let current = 0;
+  const step = target / 40;
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = current.toFixed(1) + '%';
+    if (current >= target) clearInterval(timer);
+  }, 25);
+});
+
+// Animate progress bars
+setTimeout(() => {
+  document.querySelectorAll('.progress-bar').forEach(bar => {
+    bar.style.width = bar.dataset.width + '%';
+  });
+}, 100);
+
+// Feature importance chart
+const feats = {{ feature_imp | tojson }};
+new Chart(document.getElementById('featChart'), {
+  type: 'bar',
+  data: {
+    labels: feats.map(f => f[0].replace('item_category_', '')),
+    datasets: [{
+      data: feats.map(f => parseFloat(f[1].toFixed(3))),
+      backgroundColor: feats.map((_, i) =>
+        ['#4f6ef7','#818cf8','#a78bfa','#c4b5fd','#6366f1','#8b5cf6','#7c3aed','#6d28d9'][i % 8]
+      ),
+      borderRadius: 6, borderSkipped: false
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins: { legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` Importance: ${ctx.parsed.x}` }}
+    },
+    scales: {
+      x: { grid: { color: '#f1f5f9' }, ticks: { font: { size: 11 } } },
+      y: { grid: { display: false }, ticks: { font: { size: 11 } } }
+    },
+    animation: { duration: 1000 }
+  }
+});
+</script>
+{% endblock %}
